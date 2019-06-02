@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Current, type: :model do
   describe 'class methods' do
-    it 'can get data' do
+    it 'can get attributes' do
       attributes = {
         summary: "sunny",
         icon: "url",
