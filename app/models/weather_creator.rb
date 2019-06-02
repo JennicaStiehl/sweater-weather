@@ -5,9 +5,16 @@ class WeatherCreator
   end
 
   def get_weather
-    response = Faraday.get("https://api.darksky.net/forecast/a95c0a369697d8799cfc228fc67a908b/#{@latitude},#{@longitude}")
-    results = JSON.parse(response.body, symbolize_names: true)
     Weather.new(results)
+  end
+
+  private
+  def service
+    @_service ||= WeatherService.new
+  end
+
+  def results
+    @_results ||= service.get_forecast(@latitude, @longitude)
   end
 
 end
