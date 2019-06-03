@@ -5,8 +5,8 @@ RSpec.describe Day, type: :model do
       attributes = {
         icon: "snowy",
         temperatureHigh: "34",
-        temperatureLow: "34",
-        precipProbability: "34"
+        temperatureLow: "14",
+        precipProbability: "24"
       }
       day = Day.new(attributes)
       expect(day.icon).to eq(attributes[:icon])
