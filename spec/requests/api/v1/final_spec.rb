@@ -9,6 +9,7 @@ RSpec.describe 'Amipode API' do
     expect(results[:data][:attributes][:weather][:data][:currently][:summary]).to be_a(String)
     expect(results[:data][:attributes][:weather][:data][:currently][:icon]).to be_a(String)
     expect(results[:data][:attributes][:weather][:data][:currently][:humidity]).to be_a(Float)
+    expect(results[:data][:attributes][:city]).to be_a(String)
 
   end
 end
