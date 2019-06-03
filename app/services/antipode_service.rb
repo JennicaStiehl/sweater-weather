@@ -1,15 +1,21 @@
 class AntipodeService
   attr_reader :latitude,
-                    :longitude
+                    :longitude,
+                    :city
 
-  def initialize(org_city)
-    @latitude = org_city.latitude
-    @longitude = org_city.longitude
+  def initialize(org_city_obj, city_name)
+    # binding.pry
+    @latitude = org_city_obj.latitude
+    @longitude = org_city_obj.longitude
+    @city = city_name
   end
 
   def get_antipode
-    results = get_json("api/v1/antipodes?#{@lat}&#{@long}")
-    # binding.pry
+    results = get_json("api/v1/antipodes?#{@latitude}&#{@longitude}")
+binding.pry
+    cityServ = CityService.new(@latitude,@longitude)
+    city = cityServ.get_city_name
+    antipode = Antipode.new(results, city)
     # org_city_obj = GeocodeService.new(@city)
   end
 
