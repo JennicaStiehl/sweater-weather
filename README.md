@@ -11,7 +11,3 @@ bundle install
 bundle exec figaro install
 bundle exec rake db:{create,migrate,seed}
 ```
-## Locations/Where to Find the applications
-```development: localhost:3000
-production:
-```
