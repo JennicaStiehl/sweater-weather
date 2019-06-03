@@ -1,6 +1,7 @@
 class Photo
-  attr_reader :id
-  
+  attr_reader :id,
+                    :location
+
   def initialize(data)
     @id = 1
     @location = data

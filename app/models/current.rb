@@ -1,4 +1,13 @@
 class Current
+  attr_reader :current_summary,
+                    :current_icon,
+                    :current_temp,
+                    :humidity,
+                    :visibility,
+                    :uv_index,
+                    :feels_like,
+                    :today
+
   def initialize(data)
     @data = data
     @current_summary = data[:summary]

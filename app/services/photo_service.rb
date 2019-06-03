@@ -4,15 +4,14 @@ class PhotoService
   end
 
   def get_location_photo
-    get_json("/search/photos?client_id=#{ENV["unsplash_access_key"]}&query=#{@search}&per_page=1")
-    # get_json("flickr.photos.getRecent/rest/method=flickr.photos.search&api_key=#{ENV["Flickr_Key"]}&tags=#{@search}")
+    get_json("/search/photos?query=#{@search}&per_page=1")
   end
 
   private
     def conn
-      # Faraday.new("https://www.flickr.com/") do |f|
       Faraday.new("https://api.unsplash.com/") do |f|
         f.adapter Faraday.default_adapter
+        f.params[:client_id] = ENV["unsplash_access_key"]
       end
     end
 
