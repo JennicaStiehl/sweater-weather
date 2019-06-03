@@ -1,6 +1,8 @@
 class Weather
-  attr_reader :id
-  
+  attr_reader :id,
+                    :data
+
+
   def initialize(data)
     @data = data
     @id = 1
@@ -22,9 +24,9 @@ class Weather
     Current.new(@data[:currently])
   end
 
-  def tonight
-    @data[:hourly].max do |time|
-      time[:summary]
-    end
-  end
+  # def tonight
+  #   @data[:hourly].max do |time|
+  #     time[:summary]
+  #   end
+  # end
 end
