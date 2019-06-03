@@ -1,4 +1,7 @@
 class WeatherCreator
+  attr_reader :latitude,
+                    :longitude
+                    
   def initialize(data)
     @latitude = data.latitude
     @longitude = data.longitude
