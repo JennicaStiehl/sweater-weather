@@ -1,4 +1,6 @@
 class LocationCreator
+  attr_reader :city
+
   def initialize(data)
     @city = data
   end
