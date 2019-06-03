@@ -6,7 +6,6 @@ class CityService
 
   def get_city_name
     results = get_json("api/geocode/json?latlng=#{@lat},#{@long}")
-binding.pry
   end
 
 private

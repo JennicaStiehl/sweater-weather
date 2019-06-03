@@ -4,9 +4,12 @@ RSpec.describe 'Amipode API' do
     get '/api/v1/antipode?loc=hongkong'
     results = JSON.parse(response.body, symbolize_names: true)
     expect(response).to be_successful
-    expect(results[:data][:attributes][:current][:current_summary]).to be_a(String)
-    expect(results[:data][:attributes][:current][:current_icon]).to be_a(String)
-    expect(results[:data][:attributes][:current][:humidity]).to be_a(Float)
+    binding.pry
+    expect(results[:data][:attributes][:weather][:data][:latitude]).to eq(0)
+    expect(results[:data][:attributes][:weather][:data][:longitude]).to eq(180)
+    # expect(results[:data][:attributes][:current][:current_summary]).to be_a(String)
+    # expect(results[:data][:attributes][:current][:current_icon]).to be_a(String)
+    # expect(results[:data][:attributes][:current][:humidity]).to be_a(Float)
   end
 end
 

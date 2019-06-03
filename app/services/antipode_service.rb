@@ -12,9 +12,9 @@ class AntipodeService
 
   def get_antipode
     results = get_json("api/v1/antipodes?#{@latitude}&#{@longitude}")
-binding.pry
-    cityServ = CityService.new(@latitude,@longitude)
-    city = cityServ.get_city_name
+    cityServ = CityService.new(results[:data][:attributes][:lat],results[:data][:attributes][:long])
+    city_results = cityServ.get_city_name
+    city = city_results[:results][0][:address_components][0][:long_name]
     antipode = Antipode.new(results, city)
     # org_city_obj = GeocodeService.new(@city)
   end

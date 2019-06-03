@@ -9,9 +9,10 @@ class Api::V1::AntipodeController < ApplicationController
     # binding.pry
     # coordinates = new_lat_long[:data][:attributes]
     new_weather = WeatherCreator.new(new_lat_long)
-    weather_reults = new_weather.get_weather
-    binding.pry
-    render json: AntipodeSerializer.new(weather_reults)
+    weather_results = new_weather.get_weather
+
+    # binding.pry
+    render json: AntipodeSerializer.new(AntipodeResults.new(weather_results, new_lat_long))
   end
 
 end
