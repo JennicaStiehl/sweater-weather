@@ -1,6 +1,6 @@
 class Api::V1::RoadTripController < ApplicationController
   def show
-    trip_creator = TripCreator.new(params[:start], params[:trip_end])
+    trip_creator = TripCreator.new(params[:start], params[:end])
     render json: TripSerializer.new(trip_creator.results)
 
 
