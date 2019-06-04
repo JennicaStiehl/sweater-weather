@@ -6,10 +6,10 @@ RSpec.describe 'Road Trip API' do
 
     expect(response).to be_successful
     results = JSON.parse(response.body, symbolize_names: true)
-    expect(results).to have_keys(:trip_duration)
-    expect(results).to have_keys(:summary)
-    expect(results).to have_keys(:temperature)
-    expect(results).to have_keys(:precip)
+    expect(results).to have_key(:trip_duration)
+    expect(results).to have_key(:summary)
+    expect(results).to have_key(:temperature)
+    expect(results).to have_key(:time_of_forecast)
   end
 end
 

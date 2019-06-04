@@ -8,6 +8,6 @@ class RoadTripService
     response = Faraday.get("https://maps.googleapis.com/maps/api/directions/json?origin=#{@start}&destination=#{@trip_end}&key=#{ENV["Google_API_Key"]}")
     trip_info = JSON.parse(response.body, symbolize_names: true)
     duration = trip_info[:routes][0][:legs][0][:duration][:text]
-    binding.pry
+    RoadTrip.new(duration, @start, @trip_end)
   end
 end
