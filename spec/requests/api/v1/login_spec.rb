@@ -1,17 +1,16 @@
 require 'rails_helper'
 RSpec.describe 'ua a user' do
   it ' can login' do
-    user = User.create(email: "whatever@example.com", password: "password")
-
+    user = User.new(email: "whatever@example.com", password: "password", api_key: "hcsajdjashdjsagdhjsa")
+    user.save
     params = {
                              "email": "whatever@example.com",
-                             "password": "password",
-                             "password_confirmation": "password"
+                             "password": "password"
                            }
 
     post '/api/v1/sessions', params: params
     user = User.find_by_email("whatever@example.com")
-    binding.pry
+
     data = JSON.generate(user)
     expect(response).to be_successful
     expect(JSON.parse(response.body)).to eq(

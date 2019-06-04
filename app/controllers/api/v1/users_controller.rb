@@ -2,7 +2,8 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     user = User.new(email: params[:email], password: params[:password],
-                api_key: SecureRandom.hex, username: params[:username])
+                api_key: generate_api_key, username: params[:username])
+
     if user
       user.save
       render json: {status: "201",
@@ -22,11 +23,11 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def generate_api_key
-    api_key: SecureRandom.hex
+    SecureRandom.hex
   end
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :api_key)
   end
 
 end
