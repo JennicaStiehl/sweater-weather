@@ -9,7 +9,9 @@ class Api::V1::SessionsController < ApplicationController
                               "api_key": user.api_key
                             }}
     else
-      render json: {message: "unable to login"}
+      render json: {status: "401",
+                            body:
+                            { "message": "Unauthorized"}}, status: 401
     end
   end
 end

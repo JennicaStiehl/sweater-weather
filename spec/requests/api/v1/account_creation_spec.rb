@@ -14,12 +14,19 @@ RSpec.describe 'As a new user' do
     expect(response).to be_successful
     expect(JSON.parse(response.body)).to eq(
     {"status"=>"201", "body"=>{"api_key"=>"#{user.api_key}"}})
-    # get "/api/v1/users?email=whatever@example.com&password=password"
-    # data = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
-    # expect(data[0].username.include?('jamal')).to eq(true)
-    # expect(data.include?('js@gmail')).to eq(false)
+  end
+  it 'can receives an error when passwords dont match' do
+     params = {
+                              "email": "whatever@example.com",
+                              "password": "password",
+                              "password_confirmation": " "
 
-    # expect(response).to eq("whatever@example.com")
+                            }
+    post '/api/v1/users', params: params
+    user = User.last
+    data = JSON.generate(user)
+
+    expect(JSON.parse(response.body)).to eq(
+    {"status"=>"406", "body"=>{"message"=>"Unable to create account"}})
   end
 end

@@ -13,7 +13,7 @@ RSpec.describe Photo, type: :model do
     it 'can get the url' do
       photo = Photo.new("denver,co")
       url = photo.url
-      expect(url).to eq("https://images.unsplash.com/photo-1558539158-5ba5d234f3b3?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjc0NzcyfQ")
+      expect(url).to start_with("https://images.unsplash.com/")
     end
   end
 end

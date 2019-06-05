@@ -16,4 +16,20 @@ RSpec.describe 'ua a user' do
     expect(JSON.parse(response.body)).to eq(
     {"status"=>"200", "body"=>{"api_key"=>"#{user.api_key}"}})
   end
+  it ' cant login with bad credentials' do
+    user = User.new(email: "whatever@example.com", password: "password", api_key: "hcsajdjashdjsagdhjsa")
+    user.save
+    params = {
+                             "email": "whatever@example.com",
+                             "password": "pass"
+                           }
+
+    post '/api/v1/sessions', params: params
+    user = User.find_by_email("whatever@example.com")
+
+    data = JSON.generate(user)
+    expect(response).to_not be_successful
+    expect(JSON.parse(response.body)).to eq(
+    {"status"=>"401", "body" => {"message" => "Unauthorized"}})
+  end
 end

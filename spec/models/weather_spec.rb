@@ -15,18 +15,18 @@ RSpec.describe Weather, type: :model do
     it 'can get the hourly weather' do
       hourly_weather = @weather.hourly
       expect(hourly_weather[0].summary).to be_a(String)
-      expect(hourly_weather[0].temp).to be_a(Float)
+      expect(hourly_weather[0].temp).to be_a(Numeric)
     end
     it 'can get the daily weather' do
       daily_weather = @weather.daily
       expect(daily_weather[0].icon).to be_a(String)
-      # expect(daily_weather[0].low).to be_a(Float)
+      expect(daily_weather[0].low).to be_a(Numeric)
       expect(daily_weather[0].high).to be_a(Float)
       expect(daily_weather[0].precip).to be_a(Float)
     end
     it 'can get the current weather' do
       current_weather = @weather.current
-      expect(current_weather.current_temp).to be_a(Float)
+      expect(current_weather.current_temp).to be_a(Numeric)
       expect(current_weather.current_summary).to be_a(String)
       expect(current_weather.current_icon).to be_a(String)
       expect(current_weather.humidity).to be_a(Float)

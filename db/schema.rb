@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_06_04_214232) do
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "location"
-    t.index ["users_id"], name: "index_favorites_on_users_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|

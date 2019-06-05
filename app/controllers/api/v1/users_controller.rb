@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     user = User.new(email: params[:email], password: params[:password],
                 api_key: generate_api_key, username: params[:username])
 
-    if user
+    if user && params[:password] == params[:password_confirmation]
       user.save
       render json: {status: "201",
                             body:
@@ -12,7 +12,9 @@ class Api::V1::UsersController < ApplicationController
                               "api_key": user.api_key
                             }}
     else
-      render json: {message: "unable to create an account"}
+      render json: {status: "406",
+                            body:
+                            { "message": "Unable to create account"}}, status: 401
     end
   end
 

@@ -6,5 +6,6 @@ RSpec.describe 'Image API' do
     expect(response).to be_successful
     expect(results).to be_a(Hash)
     expect(results[:data][:attributes][:url]).to be_a(String)
+    expect(results[:data][:attributes][:url]).to start_with("https://images.unsplash.com/")
   end
 end
