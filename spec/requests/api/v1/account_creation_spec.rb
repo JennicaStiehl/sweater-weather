@@ -10,7 +10,7 @@ RSpec.describe 'As a new user' do
     post '/api/v1/users', params: params
     user = User.last
     data = JSON.generate(user)
-    binding.pry
+
     expect(response).to be_successful
     expect(JSON.parse(response.body)).to eq(
     {"status"=>"201", "body"=>{"api_key"=>"#{user.api_key}"}})
