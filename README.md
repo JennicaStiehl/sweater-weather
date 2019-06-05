@@ -11,3 +11,7 @@ bundle install
 bundle exec figaro install
 bundle exec rake db:{create,migrate,seed}
 ```
+## Production
+```https://boiling-escarpment-30827.herokuapp.com/
+https://git.heroku.com/boiling-escarpment-30827.git
+```
